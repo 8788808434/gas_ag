@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -14,30 +14,20 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-@Table(name="mast_agency")
-public class Agency
+@Table(name="mst_supplier")
+public class Supplier 
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="agency_id")
-	private Integer agencyId;
+	@Column(name="id")
+	private Integer id;
 	
 	@Column(name="name")
 	private String name;
 	
-	@Column(name="country")
-	private String country;
+	@Column(name="role")
+	private String role;
 	
-	@Column(name="state")
-	private String state;
-	
-	@Column(name="city")
-	private String city;
-	
-	@Column(name="zip")
-	private String zip;
-	
-	@Column(name="user_id")
-	@OneToMany
-	private User userId;
+	@OneToOne
+	private Agency aid;
 }
