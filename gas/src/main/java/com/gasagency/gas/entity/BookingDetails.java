@@ -1,11 +1,13 @@
 package com.gasagency.gas.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -14,30 +16,24 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-@Table(name="mast_agency")
-public class Agency
+@Table(name="txn_booking_details")
+public class BookingDetails
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="agency_id")
-	private Integer agencyId;
+	@Column(name="booking_id")
+	private Integer bookingId;
 	
-	@Column(name="name")
-	private String name;
+	@Column(name="booker_name")
+	private String bookerName;
 	
-	@Column(name="country")
-	private String country;
+	@Column(name="total_cylinder_count")
+	private Integer totalCylinderCount;
 	
-	@Column(name="state")
-	private String state;
-	
-	@Column(name="city")
-	private String city;
-	
-	@Column(name="zip")
-	private String zip;
+	@Column(name="booking_date")
+	private Date bookingDate;
 	
 	@Column(name="user_id")
-	@OneToMany
+	@OneToOne
 	private User userId;
 }
